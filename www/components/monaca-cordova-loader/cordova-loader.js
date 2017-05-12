@@ -13,5 +13,5 @@
     var elm = document.createElement('script');
     elm.setAttribute("src", "cordova.js");
     document.getElementsByTagName("head")[0].appendChild(elm);
-  };
+  }
 })();

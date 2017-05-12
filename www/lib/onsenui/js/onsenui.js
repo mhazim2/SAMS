@@ -627,8 +627,8 @@ if (objCtr.defineProperty) {
 }
 
 
-;(function () {
-	'use strict';
+(function () {
+    'use strict';
 
 	/**
 	 * @preserve FastClick: polyfill to remove click delays on browsers with touch UIs.
@@ -1530,7 +1530,7 @@ MicroEvent.mixin  = function(destObject){
       destObject[props[i]] = MicroEvent.prototype[props[i]];
     }
   }
-}
+};
 
 // export in common js
 if( typeof module !== "undefined" && ('exports' in module)){
@@ -1982,8 +1982,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         this.platform.version = this.getPlatformVersion();
 
         return this;
-    };
-
+    }
     Viewport.prototype.ensureViewportElement = function(){
         this.viewportElement = document.querySelector('meta[name=viewport]');
         if(!this.viewportElement){
@@ -12601,7 +12600,7 @@ var CarouselElement = function (_BaseElement) {
         return;
       }
 
-      return;
+
     }
 
     /**

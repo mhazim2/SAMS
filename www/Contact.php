@@ -10,81 +10,11 @@
  }
 
 ?>
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
-  <script src="components/loader.js"></script>
-  <script src="lib/onsenui/js/onsenui.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-  <link rel="stylesheet" href="components/loader.css">
-  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
-  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
-  <link rel="stylesheet" href="css/style.css">
-
-  <script>
-    ons.ready(function() {
-      console.log("Onsen UI is ready!");
-    });
-
-    window.fn = {};
-    window.fn.open = function() {
-      var menu = document.getElementById('menu');
-      menu.open();
-    };
-    window.fn.load = function(page) {
-      var content = document.getElementById('content');
-      var menu = document.getElementById('menu');
-      content
-        .load(page) 
-        .then(menu.close.bind(menu));
-    };
-    document.addEventListener('show', function(event) {
-      var page = event.target;
-      var titleElement = document.querySelector('#toolbar-title');
-
-      if (page.matches('#first-page')) {
-        titleElement.innerHTML = 'Contact';
-      } else if (page.matches('#second-page')) {
-        titleElement.innerHTML = 'Agenda';
-      } else if (page.matches('#third-page')) {
-        titleElement.innerHTML = 'Invite';
-      }
-    });
-    var login = function() {
-      var username = document.getElementById('username').value;
-      var password = document.getElementById('password').value;
-      
-      if (username === 'bob' && password === 'secret') {
-        ons.notification.alert('You Are Logged In');
-        var content = document.getElementById('content');
-        var menu = document.getElementById('menu');
-        content
-          .load('home.html') 
-          .then(menu.close.bind(menu));
-      }
-      else {
-        ons.notification.alert('Incorrect username or password.');
-      }      
-    };
-    document.addEventListener('init', function(event) {
-      var page = event.target;
-
-      if (page.id === 'page1') {
-        page.querySelector('#push-button').onclick = function() {
-          document.querySelector('#myNavigator').pushPage('page2.html', {data: {title: 'Page 2'}});
-        };
-      } else if (page.id === 'page2') {
-        page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
-      }
-    });
-
-  </script>
+  Sams
 </head>
-<body>
-<ons-splitter>
 <p><a href="Profile.php"> profile </a> / <a href="Invitation.php">Invitation</a> / <a href="Home.php">Agenda</a> / <a href="Contact.php">Contact</a> / <a href="logout.php?logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></p>
 
 <h3>contact</h3>
@@ -129,12 +59,7 @@
   }
   ?>
 </table>
-
-  <ons-splitter-content id="content" page="Contact.php"></ons-splitter-content>
-
 <a href="tambahcontact.php">tambah contact</a>
-<a href="home.php">Home</a>
-</ons-splitter>
 </body>
 </html>
 <?php ob_end_flush(); ?>

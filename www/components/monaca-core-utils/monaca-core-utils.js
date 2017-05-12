@@ -215,7 +215,7 @@ window.monaca = window.monaca || {};
                 window.console[level](message);
             }
         }
-    }
+    };
 
     /**
      * monaca console methods
@@ -287,7 +287,7 @@ window.StatusBar = window.StatusBar || {};
   */
   StatusBar.hideStatusBar = function() {
     monaca.apiQueue.exec(null, null, "mobi.monaca.nativecomponent", 'hideStatusBar', []);
-  }
+  };
 
   /*
     showStatusBar
@@ -295,7 +295,7 @@ window.StatusBar = window.StatusBar || {};
   */
   StatusBar.showStatusBar = function() {
     monaca.apiQueue.exec(null, null, "mobi.monaca.nativecomponent", 'showStatusBar', []);
-  }
+  };
 
   /* 
     statusBarStyleDefault
@@ -303,7 +303,7 @@ window.StatusBar = window.StatusBar || {};
   */
   StatusBar.statusBarStyleDefault = function() {
     monaca.apiQueue.exec(null, null, "mobi.monaca.nativecomponent", 'statusBarStyleDefault', []);
-  }
+  };
 
   /* 
     statusBarStyleLightContent
@@ -311,7 +311,7 @@ window.StatusBar = window.StatusBar || {};
   */
   StatusBar.statusBarStyleLightContent = function() {
     monaca.apiQueue.exec(null, null, "mobi.monaca.nativecomponent", 'statusBarStyleLightContent', []);
-  }
+  };
 
   /* 
     statusBarStyleBlackOpaque
@@ -319,7 +319,7 @@ window.StatusBar = window.StatusBar || {};
   */
   StatusBar.statusBarStyleBlackOpaque = function() {
     monaca.apiQueue.exec(null, null, "mobi.monaca.nativecomponent", 'statusBarStyleBlackOpaque', []);
-  }
+  };
 
   /* 
     statusBarStyleBlackTranslucent
@@ -428,10 +428,10 @@ window.monaca.cloud = window.monaca.cloud || {};
   document.addEventListener("deviceready", function() {
 
     cordova.exec(function(result) {
-        monaca.cloud.deviceId = new String(result.deviceId);
-        monaca.cloud.url = new String(result.url);
-        monaca.cloud.backendId = new String(result.backendId);
-        monaca.cloud.apiKey = new String(result.apiKey);
+        monaca.cloud.deviceId = String(result.deviceId);
+        monaca.cloud.url = String(result.url);
+        monaca.cloud.backendId = String(result.backendId);
+        monaca.cloud.apiKey = String(result.apiKey);
 
         // execute and clear postQueue
         for (var i = 0; i < monaca.cloud.postQueue.length; i++) {

@@ -185,8 +185,8 @@
             <?php echo $errMSG; ?>          
           <?php
             }
-          ?>          
-        
+          ?>
+
 
           <div style="text-align: center; margin-top: 70px;">
             <p>
@@ -205,6 +205,7 @@
             </p>
             <p style="margin-top: 30px;">
               <button type="submit" class="button" name="btn-login">Sign In</button>
+
               <!--<ons-button type="submit" name="btn-login" onclick="login()">Sign in</ons-button>-->
             </p>
             <p>

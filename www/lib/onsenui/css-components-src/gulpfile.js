@@ -29,7 +29,7 @@ gulp.task('stylelint', () => {
       failAfterError: false,
       reporters: [{formatter: 'string', console: true}]
     }));
-});
+})
 
 ////////////////////////////////////////
 // cssmin
@@ -39,7 +39,7 @@ gulp.task('cssmin', ['generate-preview'], () => {
     .pipe($.cssmin())
     .pipe($.rename({suffix: '.min'}))
     .pipe(gulp.dest(prefix));
-});
+})
 
 ////////////////////////////////////////
 // cssnext
@@ -57,7 +57,7 @@ gulp.task('cssnext', ['stylelint'], () => {
     .pipe($.plumber())
     .pipe($.postcss(plugins))
     .pipe(gulp.dest(prefix));
-});
+})
 
 ////////////////////////////////////////
 // generate-preview
@@ -65,9 +65,10 @@ gulp.task('cssnext', ['stylelint'], () => {
 gulp.task('generate-preview', ['cssnext'], () => {
   const template = fs.readFileSync(__dirname + '/templates/preview.html.eco', 'utf-8');
   const css = fs.readFileSync(prefix + 'onsen-css-components.css', 'utf-8');
-  const components = ancss.parse(css, {detect: line => line.match(/^~/)});
-  fs.writeFileSync(prefix + 'preview.html', eco.render(template, {components}), 'utf-8');
-});
+const components = ancss.parse(css, {detect: line = > line.match(/^~/)
+})
+fs.writeFileSync(prefix + 'preview.html', eco.render(template, {components}), 'utf-8');
+})
 
 ////////////////////////////////////////
 // serve
@@ -82,5 +83,5 @@ gulp.task('serve', ['build'], done => {
     },
     startPath: '/preview.html'
   });
-});
+})
 

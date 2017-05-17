@@ -8,7 +8,7 @@
 
   	<p><a href=".php">Back</a>
 
-  	<form action="tambah-proses.php" method="post">
+  	<form action="Nothing/tambah-proses.php" method="post">
   		<table cellpadding="3" cellspacing="0">
   			<tr>
   				<td>nama teman</td>

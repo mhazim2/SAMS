@@ -82,6 +82,18 @@
       }
     });
 
+    /*document.addEventListener('init', function(event) {
+        var page = event.target;
+
+        if (page.id === 'second-page') {
+            page.querySelector('#onfab').onclick = function() {
+                document.querySelector('#myNavigator2').pushPage('tambahContact.html', {data: {title: 'Page 2'}});
+            };
+        } else if (page.id === 'page2') {
+            page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
+        }
+    });*/
+
   </script>
 </head>
 <body>
@@ -123,13 +135,13 @@
       </p>-->
       <ons-tabbar position="auto">
         <ons-tab label="Tab 1" page="tab1.php">
-          <ons-icon size="45px" icon="md-face"></ons-icon>
+          <ons-icon size="40px" icon="md-accounts"></ons-icon>
         </ons-tab>
         <ons-tab id="tab2" label="Tab 2" page="tab2.php" active>
-          <ons-icon size="45px" icon="md-calendar"></ons-icon>
+          <ons-icon size="35px" icon="md-calendar"></ons-icon>
         </ons-tab>
         <ons-tab label="Tab 3" page="tab3.php">
-          <ons-icon size="35px" icon="md-android"></ons-icon>
+          <ons-icon size="35px" icon="md-notifications"></ons-icon>
         </ons-tab>
       </ons-tabbar>
     </ons-page>
@@ -193,116 +205,68 @@
       <!--<p style="text-align: center;">
         Contact
       </p>-->
-      <?php
+        <?php
         //iclude file koneksi ke database
         $simpanid = $_SESSION['user'];
         //query ke database dg SELECT table siswa diurutkan berdasarkan NIS paling besar
         $query = mysqli_query($conn, "SELECT * FROM contact INNER JOIN users ON id_friend_contact = id_user WHERE id_user_contact='$simpanid' ORDER BY name") or die(mysqli_error($conn));
-
-        //cek, apakakah hasil query di atas mendapatkan hasil atau tidak (data kosong atau tidak)
-        if(mysqli_num_rows($query) == 0){	//ini artinya jika data hasil query di atas kosong
-
-            //jika data kosong, maka akan menampilkan row kosong
-            echo '<tr><td colspan="6">Tidak ada contact!</td></tr>';
-
-        }else{	//else ini artinya jika data hasil query ada (data diu database tidak kosong)
-
-            //jika data tidak kosong, maka akan melakukan perulangan while
-            $no = 1;	//membuat variabel $no untuk membuat nomor urut
-            while($data = mysqli_fetch_assoc($query)){	//perulangan while dg membuat variabel $data yang akan mengambil data di database
-
-            //menampilkan row dengan data di database
-            echo '<tr>';
-                echo '<td>'.$no.'</td>';	//menampilkan nomor urut
-                echo '<td>'.$data['id_friend_contact'].'</td>';	//menampilkan data nis dari database
-                echo '<td>'.$data['name'].'</td>';	//menampilkan data nama lengkap dari database
-                echo '<td>'.$data['email'].'</td>';	//menampilkan data kelas dari database
-                echo '<td><a href="Hapuscontact.php?id='.$data['id_contact'].'" onclick="return confirm(\'Yakin?\')">Hapus</a></td>';	//menampilkan link edit dan hapus dimana tiap link terdapat GET id -> ?id=siswa_id
-            echo '</tr>';
-
-            $no++;	//menambah jumlah nomor urut setiap row
-            }
-        }
         ?>
-        </table>
-        <a href="tambahcontact.php">tambah contact</a>
-      <ons-list>
-        <ons-list-header>Me</ons-list-header>
-        <ons-list-item tappable onclick="ons.notification.alert('COMING SOON AS POSSIBLE')">
-          <div class="left">
-            <img class="list-item__thumbnail" src="http://www.aveleyman.com/Gallery/ActorsN/49595-7390.jpg">
-          </div>
-          <div class="center">
-            <span class="list-item__title">Cutest kitty</span><span class="list-item__subtitle">On the Internet</span>
-          </div>
-        </ons-list-item>
-        <ons-list-header>Contact</ons-list-header>
-        <ons-list-item tappable onclick="ons.notification.alert('COMING SOON AS POSSIBLE')">
-          <div class="left">
-            <img class="list-item__thumbnail" src="https://pbs.twimg.com/profile_images/734356375665418244/TPPPHIfI.jpg">
-          </div>
-          <div class="center">
-            <span class="list-item__title">Cutest kitty</span><span class="list-item__subtitle">On the Internet</span>
-          </div>
-        </ons-list-item>
-        <ons-list-item tappable onclick="ons.notification.alert('COMING SOON AS POSSIBLE')">
-          <div class="left">
-            <img class="list-item__thumbnail" src="https://www.memecomic.id/data/meme_bg/17e7440e75a647ef0607e4680def62de.jpg">
-          </div>
-          <div class="center">
-            <span class="list-item__title">Cutest kitty</span><span class="list-item__subtitle">On the Internet</span>
-          </div>
-        </ons-list-item>
-        <ons-list-item tappable onclick="ons.notification.alert('COMING SOON AS POSSIBLE')">
-          <div class="left">
-            <img class="list-item__thumbnail" src="https://thetab.com/blogs.dir/90/files/2017/01/9-ucl.jpg">
-          </div>
-          <div class="center">
-            <span class="list-item__title">Cutest kitty</span><span class="list-item__subtitle">On the Internet</span>
-          </div>
-        </ons-list-item>
-        <ons-list-item tappable onclick="ons.notification.alert('COMING SOON AS POSSIBLE')">
-          <div class="left">
-            <img class="list-item__thumbnail" src="http://i.imgur.com/UIfNJYN.png">
-          </div>
-          <div class="center">
-            <span class="list-item__title">Cutest kitty</span><span class="list-item__subtitle">On the Internet</span>
-          </div>
-        </ons-list-item>
-        <ons-list-item tappable onclick="ons.notification.alert('COMING SOON AS POSSIBLE')">
-          <div class="left">
-            <img class="list-item__thumbnail" src="http://i.imgur.com/UIfNJYN.png">
-          </div>
-          <div class="center">
-            <span class="list-item__title">Cutest kitty</span><span class="list-item__subtitle">On the Internet</span>
-          </div>
-        </ons-list-item>
-        <ons-list-item tappable onclick="ons.notification.alert('COMING SOON AS POSSIBLE')">
-          <div class="left">
-            <img class="list-item__thumbnail" src="http://i.imgur.com/UIfNJYN.png">
-          </div>
-          <div class="center">
-            <span class="list-item__title">Cutest kitty</span><span class="list-item__subtitle">On the Internet</span>
-          </div>
-        </ons-list-item>
-        <ons-list-item tappable onclick="ons.notification.alert('COMING SOON AS POSSIBLE')">
-          <div class="left">
-            <img class="list-item__thumbnail" src="http://i.imgur.com/UIfNJYN.png">
-          </div>
-          <div class="center">
-            <span class="list-item__title">Cutest kitty</span><span class="list-item__subtitle">On the Internet</span>
-          </div>
-        </ons-list-item>
-        <ons-list-item tappable onclick="ons.notification.alert('COMING SOON AS POSSIBLE')">
-          <div class="left">
-            <img class="list-item__thumbnail" src="http://i.imgur.com/UIfNJYN.png">
-          </div>
-          <div class="center">
-            <span class="list-item__title">Cutest kitty</span><span class="list-item__subtitle">On the Internet</span>
-          </div>
-        </ons-list-item>           
-      </ons-list>
-      <br />
+        <ons-list>
+            <ons-list-header>Me</ons-list-header>
+            <ons-list-item tappable ripple onclick="fn.load('Profile.php')">
+                <div class="left">
+                    <ons-icon class="list-item__thumbnail" icon="md-account-circle" size="45px" style="color: mediumseagreen;"/>
+                </div>
+                <div class="center">
+                    <span class="list-item__title">Cutest kitty</span><span class="list-item__subtitle">On the Internet</span>
+                </div>
+            </ons-list-item>
+            <ons-list-header>
+                Contact
+                <!--<p><a style="text-decoration: none;" href="tambahcontact.php">tambah contact</a></p>-->
+            </ons-list-header>
+            <?php
+                //cek, apakakah hasil query di atas mendapatkan hasil atau tidak (data kosong atau tidak)
+                if(mysqli_num_rows($query) == 0){	//ini artinya jika data hasil query di atas kosong
+
+                    //jika data kosong, maka akan menampilkan row kosong
+                    echo '<ons-list-item>Tidak ada contact!</ons-list-item>';
+
+                }else {    //else ini artinya jika data hasil query ada (data diu database tidak kosong)
+
+                    //jika data tidak kosong, maka akan melakukan perulangan while
+                    $no = 1;    //membuat variabel $no untuk membuat nomor urut
+                    while ($data = mysqli_fetch_assoc($query)) {    //perulangan while dg membuat variabel $data yang akan mengambil data di database
+
+                        //menampilkan row dengan data di database
+                        //echo '<ons-list>';
+                        //echo '<ons-list-item>'.$no.'</ons-list-item>';	//menampilkan nomor urut
+                        //echo '<ons-list-item>'.$data['id_friend_contact'].'</ons-list-item>';	//menampilkan data nis dari database
+                        echo '<ons-list-item>
+                                <div class="left">
+                                    <ons-icon class="list-item__thumbnail" icon="md-account-circle" size="45px" style="color: mediumseagreen;" tappable onclick="ons.notification.confirm(\'COMING SOON AS POSSIBLE\')"/>
+                                </div>
+                                <div class="center">
+                                    <span class="list-item__title">' .$data['name']. '</span><span class="list-item__subtitle">' .$data['email']. '</span>
+                                </div>
+                                <div class="right">
+                                    <a style="text-decoration: none;" href="Hapuscontact.php?id=' . $data['id_contact'] . '" onclick="return confirm(\'Yakin?\')">Hapus</a>
+                                </div>
+                            </ons-list-item>';
+                        //echo '<ons-list-item>'.$data['email'].'</ons-list-item>';	//menampilkan data kelas dari database
+                        //echo '<ons-list-item><a href="Hapuscontact.php?id=' . $data['id_contact'] . '" onclick="return confirm(\'Yakin?\')">Hapus</a></ons-list-item>';    //menampilkan link edit dan hapus dimana tiap link terdapat GET id -> ?id=siswa_id
+                        //echo '</ons-list>';
+
+                        $no++;    //menambah jumlah nomor urut setiap row
+                    }
+                }
+            ?>
+        </ons-list>
+        <ons-fab onclick="fn.load('tambahcontact.php')" position="bottom right">
+            <!--<ons-icon position="bottom right" icon="ion-android-person-add"></ons-icon>-->
+            <ons-icon position="bottom right" icon="md-account-add">
+        </ons-fab>
+        <br />
     </ons-page>
   </ons-template>
 
@@ -311,9 +275,9 @@
       <!--<p style="text-align: center;">
         This is the second page.
       </p>-->
-      <br />
-      <?php
-      //iclude file koneksi ke database
+        <br />
+        <?php
+        //iclude file koneksi ke database
         include('dbconnect.php');
         $simpanid = $_SESSION['user'];
         //query ke database dg SELECT table siswa diurutkan berdasarkan NIS paling besar
@@ -323,7 +287,7 @@
         if(mysqli_num_rows($query) == 0){	//ini artinya jika data hasil query di atas kosong
 
             //jika data kosong, maka akan menampilkan row kosong
-            echo '<on-list><!--<td colspan="6">--><ons-list-item>Tidak ada agenda!</ons-list-item></ons-list>';
+            echo '<ons-list><!--<td colspan="6">--><ons-list-item>Tidak ada agenda!</ons-list-item></ons-list>';
 
         }else{	//else ini artinya jika data hasil query ada (data diu database tidak kosong)
 
@@ -331,104 +295,163 @@
             $no = 1;	//membuat variabel $no untuk membuat nomor urut
             while($data = mysqli_fetch_assoc($query)){	//perulangan while dg membuat variabel $data yang akan mengambil data di database
 
-            //menampilkan row dengan data di database
-            echo '<ons-list modifier="inset">';
+                //menampilkan row dengan data di database
+                echo '<ons-list modifier="inset">';
                 echo '<ons-list-header tappable>'.$data['date_agenda'].'</ons-list-header>';	//menampilkan data nis dari database
                 echo '<ons-list-item modifier="longdivider" tappable>'.$data['subject'].'</ons-list-item>';
                 echo '<ons-list-item modifier="longdivider" tappable><div class="center"><span class="list-item__title">'.$data['place'].'</span><span class="list-item__subtitle">'.$data['time_agenda'].'</div></ons-list-item>';	//menampilkan data kelas dari database
                 //echo '<ons-list-item>'.$data['time_agenda'].'</ons-list-item>';	//menampilkan data nama lengkap dari database
                 //echo '<ons-list-item>'.$no.'</ons-list-item>';	//menampilkan nomor urut
                 //echo '<ons-list-item>'.$data['description'].'</ons-list-item>';	//menampilkan data jurusan dari database
-                echo '<ons-list-item><a class="button" href="edit.php?id='.$data['id_agenda'].'">Edit</a> &nbsp&nbsp <a class="button" href="hapus.php?id='.$data['id_agenda'].'" onclick="return confirm(\'Yakin?\')">Hapus</a></ons-list-item>';	//menampilkan link edit dan hapus dimana tiap link terdapat GET id -> ?id=siswa_id
-            echo '</ons-list>';
+                echo '<ons-list-item><a class="button" href="edit.php?id='.$data['id_agenda'].'">Detail</a> &nbsp&nbsp <a class="button" href="Hapus.php?id='.$data['id_agenda'].'" onclick="return confirm(\'Yakin?\')">Hapus</a></ons-list-item>';	//menampilkan link edit dan hapus dimana tiap link terdapat GET id -> ?id=siswa_id
+                echo '</ons-list><br/>';
 
-            $no++;	//menambah jumlah nomor urut setiap row
+                $no++;	//menambah jumlah nomor urut setiap row
             }
         }
         ?>
 
+
+        <?php /*
+        //memulai proses hapus data
+        session_start();
+        //cek dahulu, apakah benar URL sudah ada GET id -> hapus.php?id=siswa_id
+        if(isset($_GET['id'])){
+
+            //inlcude atau memasukkan file koneksi ke database
+            include('dbconnect.php');
+            $simpanid=$_SESSION['user'];
+            //membuat variabel $id yg bernilai dari URL GET id -> hapus.php?id=siswa_id
+            $id = $_GET['id'];
+            //cek ke database apakah ada data siswa dengan siswa_id='$id'
+            $cek = mysqli_query($conn, "SELECT * FROM agenda WHERE id_agenda='$id'") or die(mysqli_error());
+            $row=mysqli_fetch_array($cek);
+            //jika data siswa tidak ada
+            if(mysqli_num_rows($cek) == 0){
+
+                //jika data tidak ada, maka redirect atau dikembalikan ke halaman beranda
+                echo '<script>window.history.back()</script>';
+
+            }else{
+                if($row['invited'] == 0){
+                    $del = mysqli_query($conn, "DELETE FROM agenda WHERE id_agenda='$id'+1");
+                    $del = mysqli_query($conn, "DELETE FROM agenda WHERE id_agenda='$id'");
+                }
+
+                //jika query DELETE berhasil
+                if($del){
+                    echo 'agenda berhasil di hapus! ';		//Pesan jika proses hapus berhasil
+                    //echo '<a href="Home.php">Kembali</a>';	//membuat Link untuk kembali ke halaman beranda
+
+                }else{
+
+                    echo 'Anda tidak bisa hapus apa yang anda accept!';		//Pesan jika proses hapus gagal
+                    //echo '<a href="Home.php">Kembali</a>';	//membuat Link untuk kembali ke halaman beranda
+
+                }
+
+            }
+
+        }else{
+
+            //redirect atau dikembalikan ke halaman beranda
+            echo '<script>window.history.back()</script>';
+
+        }
+        */ ?>
         <ons-fab onclick="fn.load('tambah.php')" position="bottom right">
             <ons-icon icon="md-plus"></ons-icon>
-        </ons-fab>      
+        </ons-fab>
+        <br />
+        <!--<ons-navigator id="myNavigator2" page="page1.html"></ons-navigator>-->
+
     </ons-page>
   </ons-template>
 
   <ons-template id="tab3.php">
     <ons-page id="third-page">
-      <ons-list>
-        <ons-list-header>Default</ons-list-header>
-        <ons-list-item>Item A</ons-list-item>
-        <ons-list-item>Item B</ons-list-item>
+        <br/>
+        <?php
+        //iclude file koneksi ke database
+        include('dbconnect.php');
+        $simpanid = $_SESSION['user'];
+        //query ke database dg SELECT table siswa diurutkan berdasarkan NIS paling besar
+        $query = mysqli_query($conn, "SELECT * FROM agenda WHERE id_user_agenda= '$simpanid' AND permission = 0") or die(mysqli_error($conn));
+        //cek, apakakah hasil query di atas mendapatkan hasil atau tidak (data kosong atau tidak)
+        if(mysqli_num_rows($query) == 0){	//ini artinya jika data hasil query di atas kosong
 
-        <ons-list-header>Tappable / Ripple</ons-list-header>
-        <ons-list-item tappable>Tap me</ons-list-item>
+            //jika data kosong, maka akan menampilkan row kosong
+            echo '<ons-list-item>Tidak ada undangan!</ons-list-item>';
 
-        <ons-list-header>Chevron</ons-list-header>
-        <ons-list-item modifier="chevron" tappable>Chevron</ons-list-item>
+        }else{	//else ini artinya jika data hasil query ada (data diu database tidak kosong)
 
-        <ons-list-header>Thumbnails and titles</ons-list-header>
-        <ons-list-item>
-          <div class="left">
-            <img class="list-item__thumbnail" src="http://placekitten.com/g/40/40">
-          </div>
-          <div class="center">
-            <span class="list-item__title">Cutest kitty</span><span class="list-item__subtitle">On the Internet</span>
-          </div>
-        </ons-list-item>
+            //jika data tidak kosong, maka akan melakukan perulangan while
+            $no = 1;	//membuat variabel $no untuk membuat nomor urut
+            while($data = mysqli_fetch_assoc($query)){	//perulangan while dg membuat variabel $data yang akan mengambil data di database
+                $query2 = mysqli_query($conn, "SELECT * FROM users WHERE id_user = '$data[id_friend]'") or die(mysqli_error($conn));
+                $row = mysqli_fetch_array($query2);
+                //menampilkan row dengan data di database
+                echo '<ons-list modifier="inset">';
+                echo '<ons-list-header>'.$no.'</ons-list-header>';	//menampilkan nomor urut
+                echo '<ons-list-item>From     : '.$row['name'].'</ons-list-item>';
+                echo '<ons-list-item>Subject  : '.$data['subject'].'</ons-list-item>';
+                echo '<ons-list-item>Waktu    : '.$data['time_agenda'].'</ons-list-item>';	//menampilkan data nama lengkap dari database
+                echo '<ons-list-item>Tanggal  : '.$data['date_agenda'].'</ons-list-item>';	//menampilkan data nis dari database
+                echo '<ons-list-item>Tempat   : '.$data['place'].'</ons-list-item>';	//menampilkan data kelas dari database
+                echo '<ons-list-item>Deskripsi : '.$data['description'].'</ons-list-item>';	//menampilkan data jurusan dari database
+                echo '<ons-list-item><a type="button" class="button" href="Accept.php?id='.$data['id_agenda'].'" onclick="return confirm(\'Yakin?\')">Accept</a></ons-list-item>';	//menampilkan link edit dan hapus dimana tiap link terdapat GET id -> ?id=siswa_id
+                echo '</ons-list>';
 
-        <ons-list-header>Icons</ons-list-header>
-        <ons-list-item>
-          <div class="left">
-            <ons-icon icon="md-face" class="list-item__icon"></ons-icon>
-          </div>
-          <div class="center">
-            Icon
-          </div>
-        </ons-list-item>
-
-        <ons-list-header>Switch</ons-list-header>
-        <ons-list-item>
-          <div class="center">
-            Turn it on
-          </div>
-          <div class="right">
-            <ons-switch></ons-switch>
-          </div>
-        </ons-list-item>
-
-        <ons-list-header>Switch and icon</ons-list-header>
-        <ons-list-item>
-          <div class="left">
-            <ons-icon icon="md-face" class="list-item__icon"></ons-icon>
-          </div>
-          <div class="center">
-            Icon and switch
-          </div>
-          <div class="right">
-            <ons-switch></ons-switch>
-          </div>
-        </ons-list-item>
-
-        <ons-list-header>No divider</ons-list-header>
-        <ons-list-item modifier="nodivider">Item A</ons-list-item>
-        <ons-list-item modifier="nodivider">Item B</ons-list-item>
-
-        <ons-list-header>Long divider</ons-list-header>
-        <ons-list-item modifier="longdivider">Item A</ons-list-item>
-        <ons-list-item modifier="longdivider">Item B</ons-list-item>
-      </ons-list>
-
-      <br />
-
-      <ons-list modifier="inset">
-        <ons-list-header>Inset list</ons-list-header>
-        <ons-list-item modifier="longdivider">Item A</ons-list-item>
-        <ons-list-item modifier="longdivider">Item B</ons-list-item>
-      </ons-list>
-
-      <br />
+                $no++;	//menambah jumlah nomor urut setiap row
+            }
+            //echo $_SESSION['user'];
+        }
+        ?>
+      <br/>
     </ons-page>
   </ons-template>
+
+  <!--<ons-template id="tambahAgenda.php">
+      <ons-page id="tambahAgenda">
+          <ons-toolbar>
+              <div class="left"><ons-back-button onclick="fn.load('home.php')">Back</ons-back-button></div>
+              <div class="center">
+                  Tambah Agenda
+              </div>
+          </ons-toolbar>
+          <!--<p><a href="index.php">Back</a>
+
+          <form action="tambah-proses.php" method="post">
+              <div class="col-md-12">
+                  <div  style="text-align: center; margin-top: 70px;">
+                      <p>
+                          <ons-input id="subject" modifier="underbar" type="text" name="subject" class="form-control" placeholder="Subject" size="33" float required/>
+                      </p>
+                      <p>
+                          <ons-input id="place" modifier="underbar" type="text" name="place" class="form-control" placeholder="Place" size="33" float required/>
+                      </p>
+                      <p>
+                          <ons-input id="namefriend" modifier="underbar" type="text" name="namefriend" class="form-control" placeholder="Invite Friend" size="33" float/>
+                      </p>
+                      <p>
+                          <ons-input id="timeagenda" modifier="underbar" type="time" name="timeagenda" class="form-control" size="33" required/>
+                      </p>
+                      <p>
+                          <ons-input id="dateagenda" modifier="underbar" type="date" name="dateagenda" class="form-control" size="33" required/>
+                      </p>
+                      <p>
+                          <section style="padding: 0 8px 8px">
+                              <textarea class="textarea" type="textarea" name="description" placeholder="Type here" style="width: 80%; height: 120px;"></textarea>
+                          </section>
+                      </p>
+                      <p>
+                          <button class="button" type="submit" name="tambah" value="Tambah" ></button>
+                      </p>
+                  </div>
+              </div>
+          </form>
+      </ons-page>
+  </ons-template>-->
 
   <ons-template id="page1.html">
         <ons-page id="page1">
@@ -443,7 +466,7 @@
         </ons-page>
   </ons-template>
 
-    <ons-template id="page2.html">
+  <ons-template id="page2.html">
         <ons-page id="page2">
             <ons-toolbar>
             <div class="left"><ons-back-button>Back</ons-back-button></div>

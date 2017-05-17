@@ -17,17 +17,17 @@ if(isset($_POST['add'])){
 	//melakukan query dengan perintah INSERT INTO untuk memasukkan data ke database
 	if($count1==1 && $count2==0){
 	$input1 = mysqli_query($conn, "INSERT INTO contact VALUES(NULL, '$simpanid', '$idfriendcontact')") or die(mysqli_error());
-  $input2 = mysqli_query($conn, "INSERT INTO contact VALUES(NULL, '$idfriendcontact', '$simpanid')") or die(mysqli_error());
-}
+    $input2 = mysqli_query($conn, "INSERT INTO contact VALUES(NULL, '$idfriendcontact', '$simpanid')") or die(mysqli_error());
+	}
 	//jika query input sukses
 	if($input1 && $input2 ){
 		echo 'Data berhasil di tambahkan! ';		//Pesan jika proses tambah sukses
-		echo '<a href="Contact.php">Kembali</a>';	//membuat Link untuk kembali ke halaman tambah
+		echo '<a href="../home.php">Kembali</a>';	//membuat Link untuk kembali ke halaman tambah
 
 	}else{
 
 		echo 'Invalid user id or contact already exist! ';		//Pesan jika proses tambah gagal
-		echo '<a href="tambahcontact.php">Kembali</a>';	//membuat Link untuk kembali ke halaman tambah
+		echo '<a href="../tambahcontact.php">Kembali</a>';	//membuat Link untuk kembali ke halaman tambah
 
 	}
 

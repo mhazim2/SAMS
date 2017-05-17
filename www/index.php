@@ -168,53 +168,50 @@
 
   </script>
 </head>
-  <body>
-      
-    <ons-page>
-      
-      <ons-toolbar>
-        <div class="center">
-          SAMS Login
-        </div>
-      </ons-toolbar>
-      <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
-        <div class="col-md-12">
-          <?php
-            if ( isset($errMSG) ) {
-          ?>          
-            <?php echo $errMSG; ?>          
-          <?php
-            }
-          ?>
+    <body>
 
+        <ons-page>
 
-          <div style="text-align: center; margin-top: 70px;">
-            <p>
-              <!--<ons-input id="username" modifier="underbar" type="email" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" float/></ons-input>-->
-              <ons-input id="username" modifier="underbar" type="email" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" float/>
-            </p>
-            <p>
-              <?php echo $emailError; ?>
-            </p>
-            <p>
-              <!--<ons-input id="password" modifier="underbar" type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" float></ons-input>-->
-              <ons-input id="password" modifier="underbar" type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" float/>
-            </p>
-            <p>
-              <?php echo $passError; ?>
-            </p>
-            <p style="margin-top: 30px;">
-              <button type="submit" class="button" name="btn-login">Sign In</button>
+              <ons-toolbar>
+                <div class="center">
+                  SAMS Login
+                </div>
+              </ons-toolbar>
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
+                <div class="col-md-12">
+                    <?php
+                        if ( isset($errMSG) ) {
+                    ?>
+                    <?php echo $errMSG; ?>
+                    <?php
+                        }
+                    ?>
 
-              <!--<ons-button type="submit" name="btn-login" onclick="login()">Sign in</ons-button>-->
-            </p>
-            <p>
-              <label><a class="button2" href="register.php">Sign Up Here...</a></label>
-            </p>
-          </div>
-    
-        </div>
-      </form>
-    </ons-page>
-  </body>
+                    <div style="text-align: center; margin-top: 70px;">
+                        <p>
+                            <!--<ons-input id="username" modifier="underbar" type="email" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" float/></ons-input>-->
+                            <ons-input id="username" modifier="underbar" type="email" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" float/>
+                        </p>
+                        <p>
+                            <?php echo $emailError; ?>
+                        </p>
+                        <p>
+                            <!--<ons-input id="password" modifier="underbar" type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" float></ons-input>-->
+                            <ons-input id="password" modifier="underbar" type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" float/>
+                        </p>
+                        <p>
+                            <?php echo $passError; ?>
+                        </p>
+                        <p style="margin-top: 30px;">
+                            <button type="submit" class="button" name="btn-login">Sign In</button>
+                            <!--<ons-button type="submit" name="btn-login" onclick="login()">Sign in</ons-button>-->
+                        </p>
+                        <p>
+                            <label><a class="button2" href="register.php">Sign Up Here...</a></label>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </ons-page>
+    </body>
 </html>

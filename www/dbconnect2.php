@@ -4,10 +4,10 @@
  error_reporting( ~E_DEPRECATED & ~E_NOTICE );
  // but I strongly suggest you to use PDO or mysqlii.
 
- define('DBHOST', 'mysql.idhostinger.com');
- define('DBUSER', 'u831874325_hazim');
- define('DBPASS', 'mucang0mucang');
- define('DBNAME', 'u831874325_sams');
+ define('DBHOST', 'localhost');
+ define('DBUSER', 'root');
+ define('DBPASS', '');
+ define('DBNAME', 'sams');
 
  $conn = mysqli_connect(DBHOST,DBUSER,DBPASS);
  $dbcon = mysqli_select_db($conn, DBNAME);

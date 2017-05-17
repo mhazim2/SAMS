@@ -1,3 +1,6 @@
+<?php
+//mulai proses tambah data
+session_start();?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -77,51 +80,56 @@
   </script>
 </head>
 	<body>
-		<a href=Home.php> back </a>
-		<?php
-		//proses mengambil data ke database untuk ditampilkan di form edit berdasarkan siswa_id yg didapatkan dari GET id -> edit.php?id=siswa_id
 
-		//include atau memasukkan file koneksi ke database
-		include('dbconnect.php');
-
-		//membuat variabel $id yg nilainya adalah dari URL GET id -> edit.php?id=siswa_id
-		$id = $_GET['id'];
-
-		//melakukan query ke database dg SELECT table siswa dengan kondisi WHERE siswa_id = '$id'
-		$show = mysqli_query($conn, "SELECT * FROM agenda WHERE id_agenda='$id'");
-
-		//cek apakah data dari hasil query ada atau tidak
-		if(mysqli_num_rows($show) == 0){
-
-			//jika tidak ada data yg sesuai maka akan langsung di arahkan ke halaman depan atau beranda -> index.php
-			echo '<script>window.history.back()</script>';
-
-		}else{
-
-			//jika data ditemukan, maka membuat variabel $data
-			$data = mysqli_fetch_assoc($show);	//mengambil data ke database yang nantinya akan ditampilkan di form edit di bawah
-
-		}
-		?>
-		<ons-page id="tambahAgenda">
+		<ons-page id="editAgenda">
 			<ons-toolbar>
-				<div class="left"><a href="home.php"><ons-back-button >Back</ons-back-button></a></div>
+                <div class="left">
+                    <ons-toolbar-button onclick="location.href='home.php'">
+                        <ons-icon icon="ion-android-arrow-back"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
 				<div class="center">
-					Tambah Agenda
+					Detail Agenda
 				</div>
 			</ons-toolbar>
-				<form action="edit-proses.php" method="post">		
+            <?php
+
+
+            ?>
+				<form action="edit-proses.php" method="post">
 					<div class="col-md-12">
 						<div  style="text-align: center; margin-top: 70px;">
+                            <?php
+                            //proses mengambil data ke database untuk ditampilkan di form edit berdasarkan siswa_id yg didapatkan dari GET id -> edit.php?id=siswa_id
+
+                            //include atau memasukkan file koneksi ke database
+                            include('dbconnect.php');
+
+                            //membuat variabel $id yg nilainya adalah dari URL GET id -> edit.php?id=siswa_id
+                            $id = $_GET['id'];
+
+                            //melakukan query ke database dg SELECT table siswa dengan kondisi WHERE siswa_id = '$id'
+                            $show = mysqli_query($conn, "SELECT * FROM agenda WHERE id_agenda='$id'");
+
+                            //cek apakah data dari hasil query ada atau tidak
+                            if(mysqli_num_rows($show) == 0){
+
+                                //jika tidak ada data yg sesuai maka akan langsung di arahkan ke halaman depan atau beranda -> index.php
+                                //echo '<script>window.history.back()</script>';
+
+                            }else{
+
+                                //jika data ditemukan, maka membuat variabel $data
+                                $data = mysqli_fetch_assoc($show);	//mengambil data ke database yang nantinya akan ditampilkan di form edit di bawah
+
+                            }
+                            ?>
 							<input type="hidden" name="id" value="<?php echo $id; ?>"/>
 							<p>
 								<ons-input id="subject" modifier="underbar" type="text" name="subject" value="<?php echo $data['subject']; ?>" class="form-control" placeholder="Subject" size="33" float required/>
 							</p>
 							<p>
 								<ons-input id="place" modifier="underbar" type="text" name="place" value="<?php echo $data['place']; ?>" class="form-control" placeholder="Place" size="33" float required/>
-							</p>
-							<p>
-								<ons-input id="namefriend" modifier="underbar" type="text" name="namefriend" class="form-control" placeholder="Invite Friend" size="33" float/>
 							</p>
 							<p>
 								<ons-input id="timeagenda" modifier="underbar" type="time" name="timeagenda" value="<?php echo $data['time_agenda']; ?>" class="form-control" size="33" required/>
@@ -131,15 +139,89 @@
 							</p>
 							<p>
 								<section style="padding: 0 8px 8px">
-								<textarea class="textarea" type="textarea" name="description" value="<?php echo $data['description']; ?>" style="width: 80%; height: 120px;"></textarea>
+								<textarea class="textarea" name="description" style="width: 80%; height: 120px;"><?php echo $data['description']; ?></textarea>
 								</section>
 							</p>
 							<p>
-								<ons-input class="button" type="submit" name="simpan" value="Simpan" float/>
+								<input class="button" type="submit" name="simpan" value="Simpan" float/>
 							</p>
 						</div>
 					</div>
 				</form>
+
+            <?php
+            //mulai proses edit data
+
+            //cek dahulu, jika tombol simpan di klik
+            if(isset($_POST['simpan'])){
+
+                //inlcude atau memasukkan file koneksi ke database
+                //Sinclude('dbconnect.php');
+                //jika tombol tambah benar di klik maka lanjut prosesnya
+                $id			= $_POST['id'];
+                $subject		= $_POST['subject'];		//membuat variabel $subject dan datanya dari inputan subject
+                $place	 		= $_POST['place'];			//membuat variabel $place dan datanya dari inputan place
+                $dateagenda	= $_POST['dateagenda'];	//membuat variabel $dateagenda dan datanya dari inputan dateagenda
+                $timeagenda	= $_POST['timeagenda'];
+                $description= $_POST['description'];
+
+                $cek = mysqli_query($conn, "SELECT * FROM agenda WHERE id_agenda='$id'") or die(mysqli_error($conn));
+                $row=mysqli_fetch_array($cek);
+                //melakukan query dengan perintah UPDATE untuk update data ke database dengan kondisi WHERE siswa_id='$id' <- diambil dari inputan hidden id
+                if($row['invited']==0){
+                    $update1 = mysqli_query($conn, "UPDATE agenda SET id_friend='$row[id_friend]', subject='$subject', place='$place', date_agenda='$dateagenda', time_agenda='$timeagenda', description='$description' WHERE id_agenda='$id'") or die(mysqli_error($conn));
+                    $update2 = mysqli_query($conn, "UPDATE agenda SET id_user_agenda='$row[id_friend]', subject='$subject', place='$place', date_agenda='$dateagenda', time_agenda='$timeagenda', description='$description', permission='0' WHERE id_agenda='$id'+1") or die(mysqli_error($conn));
+                    //echo 'sukses';
+                }
+                //jika query update sukses
+                if(empty($subject) & empty($place) & empty($dateagenda) &empty($timeagenda)){
+                    ?>
+                    <script>ons.notification.alert('Data tidak lengkap');</script>
+                    <?php
+                }else if($update1 & $update2){
+                    ?>
+                    <script>ons.notification.alert('Data berhasil di simpan!');</script>
+                    <?php //echo 'Data berhasil di simpan! ';		//Pesan jika proses simpan sukses
+                    //echo '<a href="Home.php?id='.$id.'">Kembali</a>';	//membuat Link untuk kembali ke halaman edit
+                    //echo 'sukses';
+                }else{
+                    ?>
+                    <script>ons.notification.alert('Hanya pengundang yang berhak merubah agenda!');</script>
+                    <?php //echo 'Hanya pengundang yang berhak merubah agenda! ';		//Pesan jika proses simpan gagal
+                    //echo '<a href="edit.php?id='.$id.'">Kembali</a>';	//membuat Link untuk kembali ke halaman edit
+                    //echo 'gagal';
+                }
+
+
+            }else{	/*//jika tidak terdeteksi tombol simpan di klik
+
+                //redirect atau dikembalikan ke halaman edit
+                //echo '<script>window.history.back()</script>';
+                $id = $_GET['id'];
+
+                //melakukan query ke database dg SELECT table siswa dengan kondisi WHERE siswa_id = '$id'
+                $show = mysqli_query($conn, "SELECT * FROM agenda WHERE id_agenda='$id'");
+
+                //cek apakah data dari hasil query ada atau tidak
+                if(mysqli_num_rows($show) == 0){
+
+                    //jika tidak ada data yg sesuai maka akan langsung di arahkan ke halaman depan atau beranda -> index.php
+                    //echo '<script>window.history.back();</script>';
+                    ?>
+                        <script>ons.notification.alert('Data berhasil di simpan!');</script>
+                    <?php
+
+                }else{
+
+                    //jika data ditemukan, maka membuat variabel $data
+                    $data = mysqli_fetch_assoc($show);	//mengambil data ke database yang nantinya akan ditampilkan di form edit di bawah
+                    ?>
+                    <!--<script>ons.notification.alert('Data berhasil di simpan!');</script>-->
+                    <?php
+                }*/
+            }
+
+            ?>
 		</ons-page>
 	</body>
 </html>

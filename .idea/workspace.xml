@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7fd33e3c-0a5c-4a0a-b2d9-18ca6a4c1d9d" name="Default" comment="">
+    <list default="true" id="7fd33e3c-0a5c-4a0a-b2d9-18ca6a4c1d9d" name="Default" comment="simpan perubahan 3">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/admin/assets/fonts/Pe-icon-7-stroke.eot" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/admin/assets/fonts/Pe-icon-7-stroke.woff" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/admin/assets/img/default-avatar.png" />
@@ -108,12 +108,12 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="73" column="23" lean-forward="true" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+            <state relative-caret-position="337">
+              <caret line="73" column="48" lean-forward="false" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
               <folding>
-                <marker date="1495016227875" expanded="true" signature="1086:1148" ph="SELECT id_us... users" />
-                <marker date="1495016227875" expanded="false" signature="5816:5853" ph="..." />
-                <marker date="1495016227875" expanded="false" signature="7006:7023" ph="..." />
+                <marker date="1495016651565" expanded="true" signature="1086:1148" ph="SELECT id_us... users" />
+                <marker date="1495016651565" expanded="false" signature="5849:5886" ph="..." />
+                <marker date="1495016651565" expanded="false" signature="7039:7056" ph="..." />
               </folding>
             </state>
           </provider>
@@ -367,7 +367,7 @@
       <updated>1494551069458</updated>
       <workItem from="1494551075493" duration="55879000" />
       <workItem from="1495013602993" duration="444000" />
-      <workItem from="1495014154458" duration="2300000" />
+      <workItem from="1495014154458" duration="2487000" />
     </task>
     <task id="LOCAL-00001" summary="tes">
       <created>1494553865649</created>
@@ -404,11 +404,18 @@
       <option name="project" value="LOCAL" />
       <updated>1495016252451</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="simpan perubahan 3">
+      <created>1495016576138</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1495016576138</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58623000" />
+    <option name="totallyTimeSpent" value="58810000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -468,9 +475,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1495016227875" expanded="true" signature="1086:1148" ph="SELECT id_us... users" />
-            <marker date="1495016227875" expanded="false" signature="5816:5853" ph="..." />
-            <marker date="1495016227875" expanded="false" signature="7006:7023" ph="..." />
+            <marker date="1495016651565" expanded="true" signature="1086:1148" ph="SELECT id_us... users" />
+            <marker date="1495016651565" expanded="false" signature="5849:5886" ph="..." />
+            <marker date="1495016651565" expanded="false" signature="7039:7056" ph="..." />
           </folding>
         </state>
       </provider>
@@ -655,12 +662,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="73" column="23" lean-forward="true" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+        <state relative-caret-position="337">
+          <caret line="73" column="48" lean-forward="false" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
           <folding>
-            <marker date="1495016227875" expanded="true" signature="1086:1148" ph="SELECT id_us... users" />
-            <marker date="1495016227875" expanded="false" signature="5816:5853" ph="..." />
-            <marker date="1495016227875" expanded="false" signature="7006:7023" ph="..." />
+            <marker date="1495016651565" expanded="true" signature="1086:1148" ph="SELECT id_us... users" />
+            <marker date="1495016651565" expanded="false" signature="5849:5886" ph="..." />
+            <marker date="1495016651565" expanded="false" signature="7039:7056" ph="..." />
           </folding>
         </state>
       </provider>

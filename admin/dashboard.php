@@ -206,19 +206,6 @@
                                 <div class="table-full-width">
                                     <table class="table">
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" value="" data-toggle="checkbox">
-                                                    </label>
-                                                </td>
-                                                <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
                                             <?php
                                           while ($row = mysqli_fetch_assoc($datatask)){
                                             echo '<tr>';
@@ -229,10 +216,12 @@
                                                     </td>';
                                               echo '<td>'.$row['task'].'</td>';
                                               echo '<td class="td-actions text-right">
-                                                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                                      <i class="fa fa-times"></i>
-                                                  </button>
-                                              </td>';
+                                                      <form class="" action="gethapustask.php?id='.$row['id'].'"" method="post">
+                                                        <button onclick="return confirm(\'Yakin?\')" type="submit" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                          <i class="fa fa-times"></i>
+                                                        </button>
+                                                      </form>
+                                                    </td>';
                                             echo '</tr>';
                                           }
                                             ?>

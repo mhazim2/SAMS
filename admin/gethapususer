@@ -1,0 +1,35 @@
+<?php
+//memulai proses hapus data
+
+//cek dahulu, apakah benar URL sudah ada GET id -> gethapus?id=id_agenda
+if(isset($_GET['id'])){
+
+	//inlcude atau memasukkan file koneksi ke database
+	include('dbconnect.php');
+
+	//membuat variabel $id yg bernilai dari URL GET id -> gethapus?id=id_agenda
+	$id = $_GET['id'];
+
+	//cek ke database apakah ada data agenda dengan id=id_agenda
+	$cek = mysqli_query($conn, "SELECT id_user FROM users WHERE id_user='$id'") or die(mysqli_error($conn));
+
+	//jika data agenda tidak ada
+	if(mysqli_num_rows($cek) == 0){
+
+		//jika data tidak ada, maka redirect atau dikembalikan ke halaman beranda
+		echo '<script>window.history.back()</script>';
+
+	}else{
+
+		//jika data ada di database, maka melakukan query DELETE table agenda dengan kondisi WHERE id=id_agenda
+		$del = mysqli_query($conn, "DELETE FROM users WHERE id_user='$id'");
+		header("Location: Userslist.php");
+	}
+
+}else{
+
+	//redirect atau dikembalikan ke halaman beranda
+	echo '<script>window.history.back()</script>';
+
+}
+?>

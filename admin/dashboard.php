@@ -11,6 +11,8 @@
  $dataagenda=mysqli_query($conn, "SELECT * FROM agenda");
  $datauser=mysqli_query($conn, "SELECT * FROM users");
  $datatask=mysqli_query($conn, "SELECT * FROM tasks");
+ $dataadmin=mysqli_query($conn, "SELECT * FROM admin");
+ $dataadminrow=mysqli_fetch_array($dataadmin);
 ?>
 
 <!doctype html>
@@ -104,12 +106,6 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-globe"></i>
@@ -128,35 +124,21 @@
                                 <li><a href="#">Another notification</a></li>
                               </ul>
                         </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                           <a href="">
-                               <p>Account</p>
-                            </a>
-                        </li>
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <p>
-										Dropdown
+										Admin bio
 										<b class="caret"></b>
 									</p>
                               </a>
                               <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><b>Name :</b></li>
+                                <li><?php echo "  ". $dataadminrow['name_admin']; ?></li>
+                                <li><b>Email :</b></li>
+                                <li><?php echo "  ". $dataadminrow['email_admin'] ?></li>
                               </ul>
                         </li>
                         <li>
@@ -260,7 +242,7 @@
                                                   <textarea id="task" name="task" rows="1" cols="178"></textarea>
                                               </td>
                                               <td>
-                                                <input type="Button" name="add" value="Add">
+                                                <input type="submit" name="add" value="Add">
                                               </td>
                                             </tr>
                                           </form>

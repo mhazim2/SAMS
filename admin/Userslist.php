@@ -189,7 +189,13 @@
 																						echo '<td>'.$data['id_user'].'</td>';
 																						echo '<td>'.$data['name'].'</td>';
 																						echo '<td>'.$data['email'].'</td>';
-																						echo '<td><a href="gethapususer.php?id='.$data['id_user'].'" onclick="return confirm(\'Yakin?\')">Hapus</a></td>';	//menampilkan link edit dan hapus dimana tiap link terdapat GET id -> ?id=siswa_id
+																						echo '<td class="td-actions text-right">
+                                                    <form class="" action="gethapususer.php?id='.$data['id_user'].'"" method="post">
+                                                      <button onclick="return confirm(\'Yakin?\')" type="submit" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                        <i class="fa fa-times"></i>
+                                                      </button>
+                                                    </form>
+                                                  </td>';	//menampilkan link edit dan hapus dimana tiap link terdapat GET id -> ?id=siswa_id
 																					echo '</tr>';
 
 																					$no++;	//menambah jumlah nomor urut setiap row
